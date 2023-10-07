@@ -1,0 +1,35 @@
+import nltk
+from nltk.corpus import wordnet
+word_classes=['noun','verb','adjective','adverb','open','closed']
+pos_tags={
+    'n':'NN',#Mapping'n'for noun
+    'v':'JJ',#Mapping'v'for verb
+    'r':'RB',#Mapping'r'for adjective
+    'u':'UH',#Mapping'u'for interjection
+}
+def tag_word(word):
+  synsets=wordnet.synsets(word)
+  if synsets:
+    postag=pos_tag[synsets[0].pos()[0]]
+    return wordd,pos_taag
+  else:
+      return word,None
+
+
+def tag_sentence(sentence):
+  tokens=nltk.word_tokenize(sentence)
+  return taggedwords
+
+def print_taggedsentence(tagged_sentence):
+  for word,pos_tag in tagged_sentence:
+    if pos_tag:
+      print(f'{word}/{pos_tag}')
+    else:
+        print('f{word}/<not found>')
+
+import nltk
+nltk.download("averaged_perceptron_tagger")
+sentence="The quick broen fox jumps over the lazy dog."
+tagged_sentence=nltk.pos_tag(nltk.word_tokenize(sentence))
+for word,tag in tagged_sentence:
+  print(f'{word}/{tag}')
