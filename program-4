@@ -1,0 +1,14 @@
+import spacy
+nlp = spacy.load("en_core_web_sm")
+sentence = "The cat on the road, passing softly, which belongs to my neighbor, caught a mouse"
+doc = nlp(sentence)
+for token in doc:
+    print(f"token: {token.text}, lemma: {token.lemma_}, pos: {token.pos_}")
+prepositional_phrases = [chunk.text for chunk in doc.noun_chunks if "on" in [token.text for token in chunk]]
+print("\nprepositional phrases:", prepositional_phrases)
+gerundive_phrases = [chunk.text for chunk in doc.noun_chunks if "ing" in [token.text[-3:] for token in chunk]]
+print("\ngerundive phrases:", gerundive_phrases)
+infinitive_clauses = [token.text for token in doc if token.dep_ == "xcomp"]  # Corrected dep_ attribute
+print("\nnon-finite clauses (infinitive clauses):", infinitive_clauses)
+relative_clauses = [token.text for token in doc if token.dep_ == "relcl"]  # Corrected dep_ attribute
+print("\nrelative clauses:", relative_clauses)
