@@ -1,0 +1,9 @@
+import nltk
+from nltk import word_tokenize
+from nltk.probability import FreqDist
+text="This is a Storage place,Where the storage is alreay full"
+tokens=word_tokenize(text.lower())
+unigram_freq=FreqDist(tokens)
+print("most coom unigram:")
+for word, freq in unigram_freq.most_common():
+  print(f"{word}:{freq} times")
