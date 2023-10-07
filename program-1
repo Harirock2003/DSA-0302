@@ -1,0 +1,15 @@
+class DiscourseNode:
+    def __init__(self, text):
+        self.text = text
+        self.children = []
+
+    def add_child(self, child_node):
+        self.children.append(child_node)
+sentences = ["He needs to buy a car (s1).", "He wants to talk (s2)."]
+root = DiscourseNode("Discourse Root")
+root.add_child(DiscourseNode(sentences[0]))
+root.add_child(DiscourseNode(sentences[1]))
+root.children[0].add_child(DiscourseNode("Some additional information related to s1."))
+print("Root Node:", root.text)
+for idx, child in enumerate(root.children):
+    print(f"Child {idx + 1}:", child.text)
