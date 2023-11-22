@@ -1,0 +1,14 @@
+from transformers import pipeline
+
+def analyze_sentiment(text):
+    sentiment_pipeline = pipeline("sentiment-analysis")
+
+    result = sentiment_pipeline(text)
+
+    return result[0]
+
+input_text = "I love this product! It's amazing."
+
+sentiment_result = analyze_sentiment(input_text)
+
+print(f"Sentiment: {sentiment_result['label']}, Confidence: {sentiment_result['score']}")
